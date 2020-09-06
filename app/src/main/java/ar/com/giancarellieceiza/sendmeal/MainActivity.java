@@ -2,59 +2,65 @@ package ar.com.giancarellieceiza.sendmeal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.widget.CompoundButton;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    //defino los objetos que voy a usar para comunicarme con la parte grafica
-    private TextView productos; //campo de texto
-    private ListView lista_productos; //lista
-    private String nombreProductos[] ={"Xiaomi", "Samsung", "Motorola","Iphone"}; //vector que va a tener los items
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        productos = (TextView) findViewById(R.id.productos);
-        lista_productos = (ListView) findViewById(R.id.listaProductos);
+        //Le seteo la lista de meses para el spinner de meses de vencimiento de tarjetas
+        Spinner mesVencimientoSpinner = (Spinner) findViewById(R.id.mesVencimiento);
+        ArrayAdapter<CharSequence> mesVencimientoAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.months,
+                android.R.layout.simple_spinner_item
+        );
+        mesVencimientoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mesVencimientoSpinner.setAdapter(mesVencimientoAdapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lista_items_productos, nombreProductos);
-        lista_productos.setAdapter(adapter);
+        //Le seteo la lista de años para el spinner de años de vencimiento de tarjetas
+        Spinner añoVencimientoSpinner = (Spinner) findViewById(R.id.añoVencimiento);
+        ArrayAdapter<CharSequence> añoVencimientoAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.years,
+                android.R.layout.simple_spinner_item
+        );
+        añoVencimientoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        añoVencimientoSpinner.setAdapter(añoVencimientoAdapter);
 
-    }
-    //metodo que va en el boton "+" para agregar productos
-    public void Agregar(View view){
-        Intent agregar= new Intent(this, AgregarProducto.class);
-        startActivity(agregar);
-    }
+        Switch realizarCarga = findViewById(R.id.realizarCarga);
+        realizarCarga.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-}
+                SeekBar creditoInicial = findViewById(R.id.creditoInicial);
 
+                if (isChecked) {
+                    creditoInicial.setVisibility(View.VISIBLE);
+                } else {
+                    creditoInicial.setVisibility(View.GONE);
+                }
+            }
+        });
+    };
 
+    void showToast(String message) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
 
+        Toast toast = Toast.makeText(context, message, duration);
+        toast.show();
+    };
 
-
-
-/*
-
-FloatingActionButton fab = findViewById(R.id.botonAgregarProducto);
-        fab.setOnClickListener();
-                fab.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        items.add("perlas");
-        }
-        });*/
+};

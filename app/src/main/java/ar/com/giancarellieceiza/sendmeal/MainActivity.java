@@ -2,6 +2,7 @@ package ar.com.giancarellieceiza.sendmeal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -35,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //metodo que va en el boton "+" para agregar productos
-    
+    public void Agregar(View view){
+        Intent agregar= new Intent(this, AgregarProducto.class);
+        startActivity(agregar);
+    }
 
 }
 

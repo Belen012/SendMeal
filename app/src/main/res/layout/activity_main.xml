@@ -16,6 +16,7 @@
         android:background="#000000"
         android:backgroundTint="#FFFFFF"
         android:clickable="true"
+        android:onClick="Agregar"
         app:backgroundTint="#B6B6B6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

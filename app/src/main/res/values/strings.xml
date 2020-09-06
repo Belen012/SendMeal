@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SendMeal</string>
+    <string name="TextView">Productos</string>
 </resources>

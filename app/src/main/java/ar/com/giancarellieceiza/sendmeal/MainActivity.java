@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -14,24 +15,42 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> items = new ArrayList<String>(Arrays.asList(new String[]{"manzanas"}));
+
+    //defino los objetos que voy a usar para comunicarme con la parte grafica
+    private TextView productos; //campo de texto
+    private ListView lista_productos; //lista
+    private String nombreProductos[] ={"Xiaomi", "Samsung", "Motorola","Iphone"}; //vector que va a tener los items
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView list = findViewById(R.id.list);
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        list.setAdapter(itemsAdapter);
+        productos = (TextView) findViewById(R.id.productos);
+        lista_productos = (ListView) findViewById(R.id.listaProductos);
 
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                items.add("perlas");
-            }
-        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lista_items_productos, nombreProductos);
+        lista_productos.setAdapter(adapter);
 
     }
+    //metodo que va en el boton "+" para agregar productos
+    
+
 }
+
+
+
+
+
+
+/*
+
+FloatingActionButton fab = findViewById(R.id.botonAgregarProducto);
+        fab.setOnClickListener();
+                fab.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+        items.add("perlas");
+        }
+        });*/

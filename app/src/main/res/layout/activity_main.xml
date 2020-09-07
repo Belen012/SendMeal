@@ -8,42 +8,42 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txt_nombre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:ems="10"
-        android:hint="Nombre"
+        android:hint="@string/nombre"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/txt_passwordCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Repetir contraseña"
+        android:hint="@string/passwordCheck"
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tipo de tarjeta" />
+        android:layout_height="38dp"
+        android:text="@string/tipoDeTarjeta" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -53,18 +53,18 @@
         android:gravity="center_horizontal">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/button_Debito"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="10dp"
-            android:text="Debito" />
+            android:text="@string/debito" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/button_Credito"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Credito" />
+            android:text="@string/credito" />
 
     </RadioGroup>
 
@@ -74,29 +74,29 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/ET_NumeroTarjeta"
+            android:id="@+id/num_tarjeta"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:layout_width="10dp"
             android:ems="10"
-            android:hint="Número de tarjeta"
+            android:hint="@string/numeroTarjeta"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/ET_CSV"
-            android:layout_weight="1"
+            android:id="@+id/num_ccv"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
-            android:hint="CSV"
-            android:inputType="number"
-            android:layout_width="10dp" />
+            android:hint="@string/CCV"
+            android:inputType="number" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fecha de vencimiento" />
+        android:layout_height="36dp"
+        android:text="@string/fechaVencimiento" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,44 +105,46 @@
 
         <Spinner
             android:id="@+id/mesVencimiento"
-            android:layout_weight="1"
             android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/añoVencimiento"
-            android:layout_weight="2"
             android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:spinnerMode="dropdown" />
 
     </LinearLayout>
 
     <EditText
-        android:id="@+id/CBU"
+        android:id="@+id/num_CBU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="CBU"
+        android:hint="@string/CBU"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/aliasCBU"
+        android:id="@+id/txt_aliasCBU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Alias CBU" />
+        android:hint="@string/aliasCBU"
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Realizar carga inicial"/>
+            android:text="@string/realizarCargaInicial" />
 
         <Switch
             android:id="@+id/realizarCarga"
@@ -153,8 +155,8 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Credito inicial" />
+        android:layout_height="36dp"
+        android:text="@string/creditoInicial" />
 
     <SeekBar
         android:id="@+id/creditoInicial"
@@ -175,14 +177,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acepto los terminos y condiciones"/>
+            android:text="@string/terminosYcondiciones" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar" />
+        android:text="@string/registrar" />
 
 </LinearLayout>

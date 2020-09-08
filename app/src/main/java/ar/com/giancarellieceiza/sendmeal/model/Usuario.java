@@ -1,5 +1,7 @@
 package ar.com.giancarellieceiza.sendmeal.model;
 
+import android.util.Log;
+
 public class Usuario {
     private int id;
     private String nombre = "";
@@ -61,7 +63,7 @@ public class Usuario {
 
     public void setNombre(String nombre){
         this.nombre = nombre;
-        //checkValidez();
+        checkValidez();
     }
 
     public void setClave(String clave) {
@@ -94,10 +96,11 @@ public class Usuario {
         checkValidez();
     }
 
-    public void checkValidez(){
-        if(!this.email.isEmpty() && !this.clave.isEmpty()) {
-            this.valido = true;
-        }
+    public boolean checkValidez() {
+        if (this.nombre.isEmpty()) return this.valido = false;
+        if (this.clave.isEmpty()) return this.valido = false;
+        if (this.email.isEmpty()) return this.valido = false;
+        return this.valido = true;
     }
 
 }

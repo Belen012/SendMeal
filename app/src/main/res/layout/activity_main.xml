@@ -46,6 +46,7 @@
         android:text="@string/tipoDeTarjeta" />
 
     <RadioGroup
+        android:id="@+id/radiogroup_tipoTarjeta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -185,6 +186,7 @@
         android:id="@+id/button_registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/registrar" />
+        android:text="@string/registrar"
+        android:enabled="false"/>
 
 </LinearLayout>

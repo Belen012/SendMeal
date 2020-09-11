@@ -1,12 +1,19 @@
 package ar.com.giancarellieceiza.sendmeal.model;
+import android.os.Build;
 import android.text.BoringLayout;
 
+import androidx.annotation.RequiresApi;
+
+import java.util.Calendar;
 import java.util.Date;
+
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 
 public class Tarjeta {
     private String numero = "";
     private String ccv = "";
-    private Date vencimiento;
+    private Calendar vencimiento;
     private String tipo = "";
     private Boolean valido = false;         //para validacion
 
@@ -14,7 +21,7 @@ public class Tarjeta {
         checkValidez();
     }
 
-    public Tarjeta(String numero, String ccv, Date vencimiento, String tipo, Boolean valido) {
+    public Tarjeta(String numero, String ccv, Calendar vencimiento, String tipo, Boolean valido) {
         this.numero = numero;
         this.ccv = ccv;
         this.vencimiento = vencimiento;
@@ -30,7 +37,7 @@ public class Tarjeta {
         return ccv;
     }
 
-    public Date getVencimiento() {
+    public Calendar getVencimiento() {
         return vencimiento;
     }
 
@@ -39,8 +46,6 @@ public class Tarjeta {
     public Boolean getValido(){
         return valido;
     }
-
-
 
     public void setNumero(String numero) {
         this.numero = numero;
@@ -52,9 +57,10 @@ public class Tarjeta {
         checkValidez();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setVencimiento(int año, int mes) {
 
-        Date vencimiento = new Date((año - 1970)*365);
+        Calendar vencimiento = new Calendar.Builder().setFields(YEAR, año, MONTH,mes).build();
         this.vencimiento = vencimiento;
 
         checkValidez();
@@ -70,10 +76,14 @@ public class Tarjeta {
         checkValidez();
     }
 
+
     public boolean checkValidez() {
+        Calendar vencimientoMinimo = Calendar.getInstance();
+        vencimientoMinimo.add(MONTH, 3);
         if (this.ccv.isEmpty()) return this.valido = false;
         if (this.numero.isEmpty()) return this.valido = false;
         if (this.tipo.isEmpty()) return this.valido = false;
+        if (this.vencimiento.compareTo(vencimientoMinimo)<0) return this.valido = false;
         return this.valido = true;
     };
 }

@@ -2,6 +2,9 @@ package ar.com.giancarellieceiza.sendmeal.model;
 
 import android.util.Log;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Usuario {
     private int id;
     private String nombre = "";
@@ -100,6 +103,12 @@ public class Usuario {
         if (this.nombre.isEmpty()) return this.valido = false;
         if (this.clave.isEmpty()) return this.valido = false;
         if (this.email.isEmpty()) return this.valido = false;
+
+        Pattern pattern = Pattern.compile("[a-z]+@[a-z]{3}+.[a-z]", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(this.email);
+        boolean matchFound = matcher.find();
+        if (!matchFound) return this.valido = false;
+
         return this.valido = true;
     }
 

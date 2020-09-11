@@ -1,8 +1,11 @@
 package ar.com.giancarellieceiza.sendmeal;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -10,6 +13,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     Usuario usuario = new Usuario();
     String passwordRepeat = "";
     Boolean aceptaTerminos = false;
+    int montoInicial = 0;
+    Boolean realizarCargaEstado = false;
+    String mesV = "1";
+    String añoV = "2000";
+
 
     //UI
     CheckBox terminos;
@@ -50,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
     EditText aliasTarjeta;
     EditText cbuTarjeta;
     EditText ccvTarjeta;
+    Switch realizarCarga;
+    SeekBar creditoInicial;
+    Spinner mesVencimientoSpinner;
+    Spinner añoVencimientoSpinner;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,10 +79,16 @@ public class MainActivity extends AppCompatActivity {
         aliasTarjeta = findViewById(R.id.txt_aliasCBU);
         cbuTarjeta = findViewById(R.id.num_CBU);
         ccvTarjeta = findViewById(R.id.num_ccv);
+        realizarCarga = findViewById(R.id.realizarCarga);
+        creditoInicial = findViewById(R.id.creditoInicial);
+        mesVencimientoSpinner = findViewById(R.id.mesVencimiento);
+        añoVencimientoSpinner = findViewById(R.id.añoVencimiento);
 
         setListMonth();
         setListYear();
         setRealizarCarga();
+
+
 
         onTextChange(nombreUsuario, new EditCallback() {
             @Override
@@ -114,6 +134,34 @@ public class MainActivity extends AppCompatActivity {
             };
         });
 
+        añoVencimientoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                añoV = parent.getItemAtPosition(position).toString();
+                tarjeta.setVencimiento(Integer.parseInt(añoV), Integer.parseInt(mesV));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        mesVencimientoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mesV = parent.getItemAtPosition(position).toString();
+                tarjeta.setVencimiento(Integer.parseInt(añoV), Integer.parseInt(mesV));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         terminos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -129,22 +177,41 @@ public class MainActivity extends AppCompatActivity {
                     showToast("Los datos del usuario están incompletos");
                     return;
                 };
-
                 if (!tarjeta.getValido()) {
                     showToast("Los datos de la tarjeta están incompletos");
                     return;
                 };
-
                 if (passwordRepeat.compareTo(usuario.getClave()) != 0) {
                     showToast("Las contraseñas no coinciden");
                     return;
                 };
-
+                if(montoInicial == 0 && realizarCargaEstado){
+                    showToast("El valor de la carga inicial debe ser distinto de cero");
+                    return;
+                }
                 showToast("Ya estás registrado!");
             }
         });
 
+        creditoInicial.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                montoInicial = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+
     };
+
+
 
     void onTextChange (EditText editText, final EditCallback callback) {
         editText.addTextChangedListener(new TextWatcher() {
@@ -188,13 +255,10 @@ public class MainActivity extends AppCompatActivity {
     };
 
     void setRealizarCarga(){
-        Switch realizarCarga = findViewById(R.id.realizarCarga);
         realizarCarga.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                SeekBar creditoInicial = findViewById(R.id.creditoInicial);
-
+                realizarCargaEstado = isChecked;
                 if (isChecked) {
                     creditoInicial.setVisibility(View.VISIBLE);
                 } else {
@@ -206,24 +270,18 @@ public class MainActivity extends AppCompatActivity {
 
     void setListYear(){
         //Le seteo la lista de años para el spinner de años de vencimiento de tarjetas
-        Spinner añoVencimientoSpinner = (Spinner) findViewById(R.id.añoVencimiento);
+
         ArrayAdapter<CharSequence> añoVencimientoAdapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.years,
-                android.R.layout.simple_spinner_item
-        );
+                this, R.array.years, android.R.layout.simple_spinner_item);
         añoVencimientoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         añoVencimientoSpinner.setAdapter(añoVencimientoAdapter);
     }
 
     void setListMonth(){
         //Le seteo la lista de meses para el spinner de meses de vencimiento de tarjetas
-        Spinner mesVencimientoSpinner = (Spinner) findViewById(R.id.mesVencimiento);
+
         ArrayAdapter<CharSequence> mesVencimientoAdapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.months,
-                android.R.layout.simple_spinner_item
-        );
+                this, R.array.months, android.R.layout.simple_spinner_item);
         mesVencimientoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mesVencimientoSpinner.setAdapter(mesVencimientoAdapter);
     }
@@ -235,5 +293,7 @@ public class MainActivity extends AppCompatActivity {
         if (!this.aceptaTerminos) registrar.setEnabled(false);
         //if (this.passwordRepeat.compareTo(usuario.getClave()) != 0) registrar.setEnabled(false);
     };
+
+
 
 };

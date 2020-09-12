@@ -4,15 +4,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,8 +20,6 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import java.lang.reflect.Method;
 
 import ar.com.giancarellieceiza.sendmeal.model.CuentaBancaria;
 import ar.com.giancarellieceiza.sendmeal.model.Tarjeta;
@@ -72,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
 
         terminos = findViewById(R.id.terminosCondiciones);
         registrar = findViewById(R.id.button_registrar);
-        nombreUsuario = findViewById(R.id.txt_nombre);
-        passwordUsuario = findViewById(R.id.txt_password);
-        passwordCheck = findViewById(R.id.txt_passwordCheck);
-        emailUsuario = findViewById(R.id.txt_email);
-        aliasTarjeta = findViewById(R.id.txt_aliasCBU);
-        cbuTarjeta = findViewById(R.id.num_CBU);
-        ccvTarjeta = findViewById(R.id.num_ccv);
+        nombreUsuario = findViewById(R.id.edit_nombre);
+        passwordUsuario = findViewById(R.id.edit_password);
+        passwordCheck = findViewById(R.id.edit_passwordCheck);
+        emailUsuario = findViewById(R.id.edit_email);
+        aliasTarjeta = findViewById(R.id.edit_aliasCBU);
+        cbuTarjeta = findViewById(R.id.edit_numCBU);
+        ccvTarjeta = findViewById(R.id.edit_numCCV);
         realizarCarga = findViewById(R.id.realizarCarga);
         creditoInicial = findViewById(R.id.creditoInicial);
         mesVencimientoSpinner = findViewById(R.id.mesVencimiento);

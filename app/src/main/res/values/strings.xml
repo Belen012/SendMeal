@@ -18,6 +18,16 @@
     <string name="debito">Debito</string>
     <string name="fechaVencimiento">Fecha de Vencimiento</string>
 
+    <string name="nuevoPlato">Nuevo Plato</string>
+    <string name="descripcion">Descripción</string>
+    <string name="titulo">Título</string>
+    <string name="precio">Precio</string>
+    <string name="calorias">Calorías</string>
+    <string name="guardar">Guardar</string>
+
+
+    <string name="txt_view_bienvenido">Bienvenidos</string>
+
     <string-array name="months">
         <item>1</item>
         <item>2</item>

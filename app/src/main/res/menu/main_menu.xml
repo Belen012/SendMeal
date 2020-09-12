@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_Registrarme"
+        app:showAsAction="never"
+        android:title="Registrarme">
+    </item>
+    <item
+        android:id="@+id/action_CrearItem"
+        app:showAsAction="never"
+        android:title="Crear Item">
+    </item>
+    <item
+        android:id="@+id/action_ListaItems"
+        app:showAsAction="never"
+        android:title="Lista de Items">
+    </item>
+</menu>

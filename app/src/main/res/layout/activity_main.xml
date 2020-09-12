@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/txt_nombre"
+        android:id="@+id/edit_nombre"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:ems="10"
@@ -16,7 +16,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txt_password"
+        android:id="@+id/edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,7 +24,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/txt_passwordCheck"
+        android:id="@+id/edit_passwordCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -32,7 +32,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/txt_email"
+        android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -75,7 +75,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/num_tarjeta"
+            android:id="@+id/edit_numTarjeta"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -84,7 +84,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/num_ccv"
+            android:id="@+id/edit_numCCV"
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/num_CBU"
+        android:id="@+id/edit_numCBU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -129,7 +129,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/txt_aliasCBU"
+        android:id="@+id/edit_aliasCBU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

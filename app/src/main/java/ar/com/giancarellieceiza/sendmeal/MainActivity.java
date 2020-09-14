@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity {
         //barra con boton atras
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar atras = getSupportActionBar();
-        atras.setDisplayHomeAsUpEnabled(true);
-
+        ActionBar barraSuperior = getSupportActionBar();
+        barraSuperior.setDisplayHomeAsUpEnabled(true);
 
         setListMonth();
 
@@ -214,8 +213,11 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
-
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 
     //Metodos
 

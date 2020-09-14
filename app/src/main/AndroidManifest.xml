@@ -19,8 +19,11 @@
         </activity>
 
         <!-- defino la activity padre de main para que el boton atras vuelva a activity home-->
-        <activity android:name=".MainActivity"
-                  android:parentActivityName=".HomeActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label=""
+            android:parentActivityName=".HomeActivity">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
@@ -28,8 +31,10 @@
 
 
         <!-- defino la activity padre de plato nuevo para que el boton atras vuelva a activity home-->
-        <activity android:name=".PlatoNuevo"
-                  android:parentActivityName=".HomeActivity">
+        <activity
+            android:name=".PlatoNuevo"
+            android:parentActivityName=".HomeActivity">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />

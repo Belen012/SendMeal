@@ -19,5 +19,9 @@ public class PlatoNuevo extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar atras = getSupportActionBar();
         atras.setDisplayHomeAsUpEnabled(true);
+
+
+
+
     }
 }

@@ -36,9 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/descripcion" />
-
+        android:inputType="textImeMultiLine"
+        android:hint="@string/descripcion"
+        android:gravity="top"/>
 
 
     <LinearLayout

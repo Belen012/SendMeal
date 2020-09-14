@@ -9,12 +9,12 @@
 
 
     <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#63DDC1"
-    android:minHeight="?attr/actionBarSize"
-    android:theme="?attr/actionBarTheme" />
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#177761"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <TextView
         android:id="@+id/txt_view_bienvenida"

@@ -1,7 +1,9 @@
 package ar.com.giancarellieceiza.sendmeal;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Build;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     SeekBar creditoInicial;
     Spinner mesVencimientoSpinner;
     Spinner añoVencimientoSpinner;
+    Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -78,11 +81,18 @@ public class MainActivity extends AppCompatActivity {
         mesVencimientoSpinner = findViewById(R.id.mesVencimiento);
         añoVencimientoSpinner = findViewById(R.id.añoVencimiento);
 
+        //barra con boton atras
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar atras = getSupportActionBar();
+        atras.setDisplayHomeAsUpEnabled(true);
+
+
         setListMonth();
+
         setListYear();
+
         setRealizarCarga();
-
-
 
         onTextChange(nombreUsuario, new EditCallback() {
             @Override
@@ -202,10 +212,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     };
 
 
+
+
+    //Metodos
 
     void onTextChange (EditText editText, final EditCallback callback) {
         editText.addTextChangedListener(new TextWatcher() {

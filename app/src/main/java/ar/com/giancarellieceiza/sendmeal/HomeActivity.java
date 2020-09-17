@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         toolbar.inflateMenu(R.menu.main_menu);
 
         final Intent mainActivity = new Intent(this, MainActivity.class);
-        final Intent platoNuevo = new Intent(this, PlatoNuevo.class);
+        final Intent platoNuevoActivity = new Intent(this, PlatoNuevoActivity.class);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(mainActivity);
 
                     case "Crear Item":
-                       // startActivity(platoNuevo);
+                       // startActivity(platoNuevoActivity);
 
                     case "Lista de Items": //Lista de Items (actividad a crear en el paso 4)
 

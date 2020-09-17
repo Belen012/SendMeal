@@ -9,37 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        <activity android:name=".HomeActivity">
-
+        <activity android:name=".PlatoNuevoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- defino la activity padre de main para que el boton atras vuelva a activity home-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- defino la activity padre de main para que el boton atras vuelva a activity home -->
         <activity
             android:name=".MainActivity"
             android:label=""
             android:parentActivityName=".HomeActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
-
-
-        <!-- defino la activity padre de plato nuevo para que el boton atras vuelva a activity home-->
-        <activity
-            android:name=".PlatoNuevo"
-            android:parentActivityName=".HomeActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-         </activity>
-
     </application>
 
 </manifest>

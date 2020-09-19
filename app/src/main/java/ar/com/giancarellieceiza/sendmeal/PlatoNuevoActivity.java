@@ -17,8 +17,6 @@ import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
 public class PlatoNuevoActivity extends AppCompatActivity {
 
-    //intanciamos entidades
-
 
     //UI
     Toolbar toolbar;
@@ -43,7 +41,7 @@ public class PlatoNuevoActivity extends AppCompatActivity {
 
 
         //Barra con boton hacia atras
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         ActionBar atras = getSupportActionBar();
         atras.setDisplayHomeAsUpEnabled(true);

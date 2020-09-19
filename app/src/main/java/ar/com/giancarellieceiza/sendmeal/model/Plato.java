@@ -1,11 +1,14 @@
 package ar.com.giancarellieceiza.sendmeal.model;
 
+import android.widget.ImageView;
+
 public class Plato {
     private String titulo = "";
     private String descripcion = "";
     private double precio = 0.0;
     private Integer calorias = 0;
     private Boolean valido = false;
+
 
     public Plato(){
     }

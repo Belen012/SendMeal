@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         añoVencimientoSpinner = findViewById(R.id.añoVencimiento);
 
         //barra con boton atras
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar0);
         setSupportActionBar(toolbar);
         ActionBar barraSuperior = getSupportActionBar();
         barraSuperior.setDisplayHomeAsUpEnabled(true);

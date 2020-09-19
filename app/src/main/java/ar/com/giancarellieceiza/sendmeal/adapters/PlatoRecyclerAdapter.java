@@ -31,8 +31,10 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlatoViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull PlatoViewHolder viewItems, int position) {
+        viewItems.precio.setText("$"+String.valueOf(listaPlatos.get(position).getPrecio()));
+        viewItems.titulo.setText(String.valueOf(listaPlatos.get(position).getTitulo()));
+        //viewItems.imageView.
     }
 
     @Override

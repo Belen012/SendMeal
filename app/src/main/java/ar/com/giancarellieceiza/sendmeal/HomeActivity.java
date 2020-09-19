@@ -3,10 +3,12 @@ package ar.com.giancarellieceiza.sendmeal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -26,16 +28,18 @@ public class HomeActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getTitle().toString()){
-                    case "Registrarme":
-                        startActivity(mainActivity);
-
-                    case "Crear Item":
-                       // startActivity(platoNuevoActivity);
-
-                    case "Lista de Items": //Lista de Items (actividad a crear en el paso 4)
-
-                    }
+                if(item.getTitle().toString().compareTo("Registrarme")==0){
+                    startActivity(mainActivity); //no entra aca, habilita igual platoNuevoActivity
+                   // showToast(""+ item.getItemId() +item.getTitle().toString());
+                }
+                if(item.getTitle().toString().compareTo("Crear Item")==0){
+                    startActivity(platoNuevoActivity);
+                    //showToast(""+ item.getItemId() +item.getTitle().toString());
+                }
+                if(item.getTitle().toString().compareTo("Lista de Items")==0){
+                    //Lista de Items (actividad a crear en el paso 4)
+                    //showToast(""+ item.getItemId() +item.getTitle().toString());
+                }
 
                 Log.i("item", item.getTitle().toString());
 
@@ -44,5 +48,12 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+    void showToast(String message) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, message, duration);
+        toast.show();
+    };
 
 }

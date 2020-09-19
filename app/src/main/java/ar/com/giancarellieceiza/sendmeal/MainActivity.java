@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     showToast("El valor de la carga inicial debe ser distinto de cero");
                     return;
                 }
-                showToast("Ya estás registrado!");
+                showToast("¡Ya estás registrado!");
             }
         });
 
@@ -219,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Metodos
 
     void onTextChange (EditText editText, final EditCallback callback) {
         editText.addTextChangedListener(new TextWatcher() {

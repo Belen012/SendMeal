@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
 
         final Intent mainActivity = new Intent(this, MainActivity.class);
         final Intent platoNuevoActivity = new Intent(this, PlatoNuevoActivity.class);
+        final Intent listaPlatosActivity = new Intent(this, ListaPlatosActivity.class);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -37,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
                     //showToast(""+ item.getItemId() +item.getTitle().toString());
                 }
                 if(item.getTitle().toString().compareTo("Lista de Items")==0){
-                    //Lista de Items (actividad a crear en el paso 4)
+                    startActivity(listaPlatosActivity);
                     //showToast(""+ item.getItemId() +item.getTitle().toString());
                 }
 

@@ -6,23 +6,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.giancarellieceiza.sendmeal.adapters.PlatoRecyclerAdapter;
+import ar.com.giancarellieceiza.sendmeal.dao.PlatosDao;
 import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
 public class ListaPlatosActivity extends AppCompatActivity {
-    //public Plato(String titulo, String descripcion, double precio, Integer calorias)
 
-    List<Plato> listaPlatos = new ArrayList<Plato>();
-
-    RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-
+    PlatosDao platosDao;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -37,10 +37,8 @@ public class ListaPlatosActivity extends AppCompatActivity {
         atras.setDisplayHomeAsUpEnabled(true);
 
 
-        Plato plato = new Plato("fideos","fideos con salsa bella", 200, 10);
-        listaPlatos.add(plato);
-        PlatoRecyclerAdapter platoRecyclerAdapter = new PlatoRecyclerAdapter(listaPlatos);
-
+        platosDao = new PlatosDao();
+        PlatoRecyclerAdapter platoRecyclerAdapter = new PlatoRecyclerAdapter(platosDao.list());
         recyclerView = findViewById(R.id.recyclerView_listaPlatos);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -48,4 +46,5 @@ public class ListaPlatosActivity extends AppCompatActivity {
 
 
     }
+
 }

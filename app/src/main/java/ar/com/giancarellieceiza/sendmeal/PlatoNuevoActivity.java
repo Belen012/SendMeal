@@ -13,10 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ar.com.giancarellieceiza.sendmeal.dao.PlatosDao;
 import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
 public class PlatoNuevoActivity extends AppCompatActivity {
 
+    //PlatosDao platosDao;
 
     //UI
     Toolbar toolbar;
@@ -38,7 +40,7 @@ public class PlatoNuevoActivity extends AppCompatActivity {
         precio = findViewById(R.id.edit_precio);
         calorias = findViewById(R.id.edit_calorias);
         guardar = findViewById(R.id.button_guardar);
-
+        //platosDao = new PlatosDao();
 
         //Barra con boton hacia atras
         toolbar = findViewById(R.id.toolbar2);
@@ -67,6 +69,8 @@ public class PlatoNuevoActivity extends AppCompatActivity {
 
                 platoNuevo.setTitulo(titulo.getText().toString());
                 platoNuevo.setPrecio(Double.parseDouble(precio.getText().toString()));
+
+                //platosDao.add(platoNuevo);
                 showToast("¡Su plato ya se encuentra registrado!");
             }
         });

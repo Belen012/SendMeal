@@ -40,5 +40,8 @@ public class PlatosDao {
         listaPlatos.add(new Plato(titulo, descripcion, precio, calorias));
     }
 
+    public void add(Plato plato){
+        listaPlatos.add(new Plato(plato.getTitulo(),plato.getDescripcion(),plato.getPrecio(),plato.getCalorias()));
+    }
 
 }

@@ -53,7 +53,7 @@ public class Plato {
         return precio;
     }
 
-    public double getCalorias() {
+    public Integer getCalorias() {
         return calorias;
     }
 

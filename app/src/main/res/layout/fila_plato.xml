@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:elevation="5dp"
-    android:gravity="center"
-    android:padding= "10dp"
-    android:background="#3C3C3C"
-    android:layout_margin="10dp">
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:scaleType="center"
-        android:src="@drawable/comida"
-        />
+    android:layout_margin="10dp"
+    android:background="#3C3C3C">
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+
+        android:id="@+id/fila_plato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:padding= "10dp"
+        android:background="?attr/selectableItemBackground"
+        android:hapticFeedbackEnabled="true"
+        android:clickable="true">
 
-        <TextView
-            android:id="@+id/textView_titulo"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Titulo"
-            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/comida"
+            />
 
-        <TextView
-            android:id="@+id/textView_precio"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Precio"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Titulo"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_precio"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Precio"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

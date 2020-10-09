@@ -1,8 +1,10 @@
 package ar.com.giancarellieceiza.sendmeal.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
-public class Plato {
+public class Plato implements Parcelable {
     private String titulo = "";
     private String descripcion = "";
     private double precio = 0.0;
@@ -19,6 +21,7 @@ public class Plato {
         this.precio = precio;
         this.calorias = calorias;
     }
+
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -64,6 +67,51 @@ public class Plato {
         //if(this.descripcion.isEmpty()) return this.valido = false;
         return this.valido = true;
     }
+
+    @Override
+    public int describeContents() {
+        return hashCode();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(titulo);
+        dest.writeString(descripcion);
+        dest.writeDouble(precio);
+        if (calorias == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(calorias);
+        }
+        dest.writeByte((byte) (valido == null ? 0 : valido ? 1 : 2));
+    }
+
+    protected Plato(Parcel in) {
+        titulo = in.readString();
+        descripcion = in.readString();
+        precio = in.readDouble();
+        if (in.readByte() == 0) {
+            calorias = null;
+        } else {
+            calorias = in.readInt();
+        }
+        byte tmpValido = in.readByte();
+        valido = tmpValido == 0 ? null : tmpValido == 1;
+    }
+
+    public static final Creator<Plato> CREATOR = new Creator<Plato>() {
+        @Override
+        public Plato createFromParcel(Parcel in) {
+            return new Plato(in);
+        }
+
+        @Override
+        public Plato[] newArray(int size) {
+            return new Plato[size];
+        }
+    };
 }
 
 

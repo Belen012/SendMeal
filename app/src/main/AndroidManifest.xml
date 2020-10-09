@@ -41,6 +41,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
+        <activity android:name=".PedidoActivity"
+            android:label=""
+            android:parentActivityName=".ListaPlatosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaPlatosActivity" />
+        </activity>
     </application>
 
 </manifest>

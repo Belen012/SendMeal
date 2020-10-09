@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import ar.com.giancarellieceiza.sendmeal.adapters.PlatoRecyclerAdapter;
+import ar.com.giancarellieceiza.sendmeal.dao.PedidoDao;
 import ar.com.giancarellieceiza.sendmeal.model.Pedido;
 import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
@@ -24,6 +22,7 @@ public class PedidoActivity extends AppCompatActivity {
     TextView monto;
     RecyclerView listaPlatos;
     private RecyclerView.LayoutManager layoutManager;
+    PedidoDao pedidoDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class PedidoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         pedido = (Pedido) intent.getParcelableExtra("pedido");
 
-        monto = findViewById(R.id.monto);
+        monto = findViewById(R.id.textView_monto);
         float precio = 0;
         for (Plato plato : pedido.getPlatos()) {
             precio += plato.getPrecio();
@@ -47,7 +46,7 @@ public class PedidoActivity extends AppCompatActivity {
         ActionBar atras = getSupportActionBar();
         atras.setDisplayHomeAsUpEnabled(true);
 
-        listaPlatos = findViewById(R.id.listaPlatos);
+        listaPlatos = findViewById(R.id.recyclerView_listaPlatos);
         PlatoRecyclerAdapter platoRecyclerAdapter = new PlatoRecyclerAdapter(pedido.getPlatos());
         layoutManager = new LinearLayoutManager(this);
         listaPlatos.setLayoutManager(layoutManager);
@@ -58,5 +57,11 @@ public class PedidoActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ListaPlatosActivity.class);
         intent.putExtra("pedido",pedido);
         startActivity(intent);
+    }
+
+    public void onConfirmarPedido(View v ){
+        pedidoDao = new PedidoDao(this);
+        pedidoDao.Confirmar();
+
     }
 }

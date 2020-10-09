@@ -1,5 +1,6 @@
 package ar.com.giancarellieceiza.sendmeal.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import ar.com.giancarellieceiza.sendmeal.PedidoActivity;
 import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
@@ -31,10 +33,8 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlatoViewHolder viewItems, int position) {
-        viewItems.precio.setText("$"+String.valueOf(listaPlatos.get(position).getPrecio()));
-        viewItems.titulo.setText(String.valueOf(listaPlatos.get(position).getTitulo()));
-        //viewItems.imageView.
+    public void onBindViewHolder(@NonNull PlatoViewHolder holder, int position) {
+        holder.setPlato(listaPlatos.get(position));
     }
 
     @Override

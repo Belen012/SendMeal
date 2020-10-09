@@ -40,7 +40,7 @@ public class Pedido implements Parcelable {
         this.correo = in.readString();
         this.tipoEnvio = in.readString();
         this.direccion = in.readString();
-
+        this.platosSeleccionados = in.readArrayList(Plato.class.getClassLoader());
     }
 
     public Pedido(){
@@ -56,7 +56,8 @@ public class Pedido implements Parcelable {
         out.writeString(correo);
         out.writeString(tipoEnvio);
         out.writeString(direccion);
-        //out.writeParcelableList(platosSeleccionados, );
+        out.writeList(platosSeleccionados);
+//        out.writeParcelableList(platosSeleccionados, );
     }
 
 
@@ -86,5 +87,9 @@ public class Pedido implements Parcelable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Plato> getPlatos() {
+        return this.platosSeleccionados;
     }
 }

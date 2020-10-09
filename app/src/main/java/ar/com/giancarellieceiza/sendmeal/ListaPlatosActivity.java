@@ -25,8 +25,7 @@ public class ListaPlatosActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     PlatosDao platosDao;
     RecyclerView recyclerView;
-
-
+    Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class ListaPlatosActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar atras = getSupportActionBar();
         atras.setDisplayHomeAsUpEnabled(true);
-
 
         platosDao = new PlatosDao();
         PlatoRecyclerAdapter platoRecyclerAdapter = new PlatoRecyclerAdapter(platosDao.list());

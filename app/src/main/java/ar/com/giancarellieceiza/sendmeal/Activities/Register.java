@@ -1,4 +1,4 @@
-package ar.com.giancarellieceiza.sendmeal;
+package ar.com.giancarellieceiza.sendmeal.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.model.CuentaBancaria;
 import ar.com.giancarellieceiza.sendmeal.model.Tarjeta;
 import ar.com.giancarellieceiza.sendmeal.model.Usuario;
@@ -31,7 +32,7 @@ interface EditCallback {
     void onEdit (String text);
 }
 
-public class MainActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     //Instanciamos las entidades
     Tarjeta tarjeta = new Tarjeta();
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.register);
 
         terminos = findViewById(R.id.terminosCondiciones);
         registrar = findViewById(R.id.button_registrar);
@@ -80,12 +81,6 @@ public class MainActivity extends AppCompatActivity {
         creditoInicial = findViewById(R.id.creditoInicial);
         mesVencimientoSpinner = findViewById(R.id.mesVencimiento);
         añoVencimientoSpinner = findViewById(R.id.añoVencimiento);
-
-        //barra con boton atras
-        toolbar = findViewById(R.id.toolbar0);
-        setSupportActionBar(toolbar);
-        ActionBar barraSuperior = getSupportActionBar();
-        barraSuperior.setDisplayHomeAsUpEnabled(true);
 
         setListMonth();
 

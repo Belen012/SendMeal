@@ -8,46 +8,35 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.DayNight">
 
-        <activity android:name=".HomeActivity">
+        <activity android:name=".Activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- defino la activity padre de main para que el boton atras vuelva a activity home -->
+        </activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.Register"
             android:label=""
-            android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
+            android:parentActivityName=".Activities.Home"/>
+
         <activity
-            android:name=".PlatoNuevoActivity"
+            android:name=".Activities.NewPlato"
             android:label=""
-            android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
+            android:parentActivityName=".Activities.Home"/>
+
         <activity
-            android:name=".ListaPlatosActivity"
+            android:name=".Activities.Dishes"
             android:label=""
-            android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
-        <activity android:name=".PedidoActivity"
+            android:parentActivityName=".Activities.Home" />
+
+        <activity android:name=".Activities.PedidoActivity"
             android:label=""
-            android:parentActivityName=".ListaPlatosActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListaPlatosActivity" />
-        </activity>
+            android:parentActivityName=".Activities.Dishes"/>
+
     </application>
 
 </manifest>

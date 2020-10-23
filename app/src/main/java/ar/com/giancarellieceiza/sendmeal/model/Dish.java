@@ -2,9 +2,8 @@ package ar.com.giancarellieceiza.sendmeal.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
-public class Plato implements Parcelable {
+public class Dish implements Parcelable {
     private String titulo = "";
     private String descripcion = "";
     private double precio = 0.0;
@@ -12,10 +11,10 @@ public class Plato implements Parcelable {
     private Boolean valido = false;
 
 
-    public Plato(){
+    public Dish(){
     }
 
-    public Plato(String titulo, String descripcion, double precio, Integer calorias){
+    public Dish(String titulo, String descripcion, double precio, Integer calorias){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -88,7 +87,7 @@ public class Plato implements Parcelable {
         dest.writeByte((byte) (valido == null ? 0 : valido ? 1 : 2));
     }
 
-    protected Plato(Parcel in) {
+    protected Dish(Parcel in) {
         titulo = in.readString();
         descripcion = in.readString();
         precio = in.readDouble();
@@ -101,15 +100,15 @@ public class Plato implements Parcelable {
         valido = tmpValido == 0 ? null : tmpValido == 1;
     }
 
-    public static final Creator<Plato> CREATOR = new Creator<Plato>() {
+    public static final Creator<Dish> CREATOR = new Creator<Dish>() {
         @Override
-        public Plato createFromParcel(Parcel in) {
-            return new Plato(in);
+        public Dish createFromParcel(Parcel in) {
+            return new Dish(in);
         }
 
         @Override
-        public Plato[] newArray(int size) {
-            return new Plato[size];
+        public Dish[] newArray(int size) {
+            return new Dish[size];
         }
     };
 }

@@ -9,41 +9,41 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido implements Parcelable {
+public class Order implements Parcelable {
     private String correo = "";
-    private List<Plato> platosSeleccionados = new ArrayList<Plato>();
+    private List<Dish> platosSeleccionados = new ArrayList<Dish>();
     private String tipoEnvio = "";
     private String direccion = "";
 
 
-    public List<Plato> getPlatosSeleccionados() {
+    public List<Dish> getPlatosSeleccionados() {
         return platosSeleccionados;
     }
 
-    public void add(Plato plato){
-        this.platosSeleccionados.add(new Plato(plato.getTitulo(),plato.getDescripcion(),plato.getPrecio(),plato.getCalorias()));
+    public void add(Dish plato){
+        this.platosSeleccionados.add(new Dish(plato.getTitulo(),plato.getDescripcion(),plato.getPrecio(),plato.getCalorias()));
     }
 
-    public static final Parcelable.Creator<Pedido> CREATOR = new Parcelable.Creator<Pedido>() {
+    public static final Parcelable.Creator<Order> CREATOR = new Parcelable.Creator<Order>() {
 
-        public Pedido createFromParcel(Parcel in) {
-            return new Pedido(in);
+        public Order createFromParcel(Parcel in) {
+            return new Order(in);
         }
 
-        public Pedido[] newArray(int size) {
-            return new Pedido[size];
+        public Order[] newArray(int size) {
+            return new Order[size];
         }
     };
 
-    protected Pedido(Parcel in) {
+    protected Order(Parcel in) {
         //mData = in.readInt ();
         this.correo = in.readString();
         this.tipoEnvio = in.readString();
         this.direccion = in.readString();
-        this.platosSeleccionados = in.readArrayList(Plato.class.getClassLoader());
+        this.platosSeleccionados = in.readArrayList(Dish.class.getClassLoader());
     }
 
-    public Pedido(){
+    public Order(){
     }
 
     public int describeContents() {
@@ -69,7 +69,7 @@ public class Pedido implements Parcelable {
         this.correo = correo;
     }
 
-    public void setPlatosSeleccionados(List<Plato> platosSeleccionados) {
+    public void setPlatosSeleccionados(List<Dish> platosSeleccionados) {
         this.platosSeleccionados = platosSeleccionados;
     }
 
@@ -89,7 +89,7 @@ public class Pedido implements Parcelable {
         this.direccion = direccion;
     }
 
-    public List<Plato> getPlatos() {
+    public List<Dish> getPlatos() {
         return this.platosSeleccionados;
     }
 }

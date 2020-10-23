@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#3C3C3C">
+    android:background="#b7d6ed">
 
     <LinearLayout
-
-        android:id="@+id/fila_plato"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -20,22 +19,21 @@
         android:clickable="true">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:scaleType="center"
+            android:id="@+id/image"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/comida"
             />
 
         <LinearLayout
-            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView_titulo"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -43,12 +41,13 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_precio"
+                android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:text="Precio"
                 android:textSize="18sp" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

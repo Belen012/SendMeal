@@ -4,7 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 public class Plato implements Parcelable {
+    private Long id;
     private String titulo = "";
     private String descripcion = "";
     private double precio = 0.0;

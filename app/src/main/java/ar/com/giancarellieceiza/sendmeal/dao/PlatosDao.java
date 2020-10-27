@@ -4,6 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +31,6 @@ public class PlatosDao {
             listaPlatos.add(new Plato("Papas fritas con cheddar","Porcion para 1 persona",95 ,200 ));
             listaPlatos.add(new Plato("Papas fritas simples","Porcion para 1 persona",50 ,140 ));
             listaPlatos.add(new Plato("Milanesa a la pizza con papas fritas","Milanesa con salsa, oregano, aceitunas, y papas fritas",290 ,400 ));
-
         }
     }
 
@@ -43,5 +48,4 @@ public class PlatosDao {
     public void add(Plato plato){
         listaPlatos.add(new Plato(plato.getTitulo(),plato.getDescripcion(),plato.getPrecio(),plato.getCalorias()));
     }
-
 }

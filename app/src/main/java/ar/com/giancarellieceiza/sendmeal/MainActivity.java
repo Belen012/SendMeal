@@ -23,6 +23,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.List;
+
 import ar.com.giancarellieceiza.sendmeal.model.CuentaBancaria;
 import ar.com.giancarellieceiza.sendmeal.model.Tarjeta;
 import ar.com.giancarellieceiza.sendmeal.model.Usuario;
@@ -31,7 +33,7 @@ interface EditCallback {
     void onEdit (String text);
 }
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AppRepository.OnResultCallback {
 
     //Instanciamos las entidades
     Tarjeta tarjeta = new Tarjeta();
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppRepository repository = new AppRepository(this.getApplication(),this);
+        repository.buscarTodos();
 
         terminos = findViewById(R.id.terminosCondiciones);
         registrar = findViewById(R.id.button_registrar);
@@ -301,6 +306,8 @@ public class MainActivity extends AppCompatActivity {
         //if (this.passwordRepeat.compareTo(usuario.getClave()) != 0) registrar.setEnabled(false);
     };
 
-
-
+    @Override
+    public void onResult(List result) {
+        Toast.makeText(MainActivity.this, "Exito!", Toast.LENGTH_LONG).show();
+    }
 };

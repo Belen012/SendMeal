@@ -27,6 +27,10 @@
 
     <string name="nuevo_pedido">Nuevo Pedido</string>
 
+    <string name="correo">Correo</string>
+    <string name="direccion">Direccion</string>
+    <string name="agregar_plato">Agregar Plato</string>
+    <string name="confirmar_pedido">Confirmar Pedido</string>
 
     <string name="txt_view_bienvenido">Bienvenidos</string>
 

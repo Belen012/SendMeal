@@ -37,6 +37,8 @@
             android:label=""
             android:parentActivityName=".Activities.Dishes"/>
 
+        <receiver android:name=".notification.MyNotificationPublisher" />
+
     </application>
 
 </manifest>

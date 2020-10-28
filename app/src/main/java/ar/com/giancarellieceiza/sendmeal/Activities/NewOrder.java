@@ -54,4 +54,8 @@ public class NewOrder extends AppCompatActivity {
         finish();
         return true;
     };
+
+    public void onConfirmarPlato(android.view.View v) {
+
+    };
 }

@@ -24,7 +24,7 @@
             android:parentActivityName=".Activities.Home"/>
 
         <activity
-            android:name=".Activities.NewPlato"
+            android:name=".Activities.NewDish"
             android:label=""
             android:parentActivityName=".Activities.Home"/>
 
@@ -33,7 +33,7 @@
             android:label=""
             android:parentActivityName=".Activities.Home" />
 
-        <activity android:name=".Activities.PedidoActivity"
+        <activity android:name=".Activities.NewOrder"
             android:label=""
             android:parentActivityName=".Activities.Dishes"/>
 

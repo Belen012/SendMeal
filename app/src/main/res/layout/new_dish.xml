@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.NewPlato">
+    tools:context=".Activities.NewDish">
 
     <TextView
         android:id="@+id/view_titulo"

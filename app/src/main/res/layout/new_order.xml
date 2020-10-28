@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PedidoActivity"
+    tools:context=".Activities.NewOrder"
     android:orientation="vertical">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#177761"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"  />
 
     <TextView
         android:id="@+id/monto"

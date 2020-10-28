@@ -19,15 +19,14 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
-    }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
-    }
+    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -36,7 +35,7 @@ public class Home extends AppCompatActivity {
                 startActivity(new Intent(this, Register.class));
                 return true;
             case "Crear Item":
-                startActivity(new Intent(this, NewPlato.class));
+                startActivity(new Intent(this, NewDish.class));
                 return true;
             case "Lista de Items":
                 startActivity(new Intent(this, Dishes.class));
@@ -44,5 +43,5 @@ public class Home extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-}
+    };
+};

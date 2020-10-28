@@ -13,7 +13,7 @@ import android.widget.Toast;
 import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
 
-public class NewPlato extends AppCompatActivity {
+public class NewDish extends AppCompatActivity {
 
     //PlatosDao platosDao;
 

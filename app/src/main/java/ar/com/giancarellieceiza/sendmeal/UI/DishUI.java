@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import ar.com.giancarellieceiza.sendmeal.Activities.PedidoActivity;
+import ar.com.giancarellieceiza.sendmeal.Activities.NewOrder;
 import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
-import ar.com.giancarellieceiza.sendmeal.model.Order;
 
 public class DishUI extends RecyclerView.ViewHolder {
 
@@ -33,12 +32,12 @@ public class DishUI extends RecyclerView.ViewHolder {
 
     public class onSelect implements View.OnClickListener {
         public void onClick (View v) {
-            Order order;
+            ar.com.giancarellieceiza.sendmeal.model.Order order;
             Intent intent = ((Activity) v.getContext()).getIntent();
             order = intent.getParcelableExtra("pedido");
-            if (order == null) order = new Order();
+            if (order == null) order = new ar.com.giancarellieceiza.sendmeal.model.Order();
             order.add(dish);
-            Intent pedidoActivity = new Intent(v.getContext(), PedidoActivity.class);
+            Intent pedidoActivity = new Intent(v.getContext(), NewOrder.class);
             pedidoActivity.putExtra("pedido", order);
             v.getContext().startActivity(pedidoActivity);
         }

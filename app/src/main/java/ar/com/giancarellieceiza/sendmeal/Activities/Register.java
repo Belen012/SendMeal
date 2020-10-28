@@ -295,7 +295,4 @@ public class Register extends AppCompatActivity {
         if (!this.aceptaTerminos) registrar.setEnabled(false);
         //if (this.passwordRepeat.compareTo(usuario.getClave()) != 0) registrar.setEnabled(false);
     };
-
-
-
 };

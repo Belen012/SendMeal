@@ -48,4 +48,11 @@
         android:onClick="onAgregarPlato"
         android:text="Agregar plato" />
 
+    <Button
+        android:id="@+id/botonGuardarPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onConfirmarPedido"
+        android:text="Confirmar pedido" />
+
 </LinearLayout>

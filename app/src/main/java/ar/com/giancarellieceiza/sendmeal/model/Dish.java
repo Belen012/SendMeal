@@ -3,7 +3,14 @@ package ar.com.giancarellieceiza.sendmeal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Dish implements Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
     private String titulo = "";
     private String descripcion = "";
     private double precio = 0.0;

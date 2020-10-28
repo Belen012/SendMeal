@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import ar.com.giancarellieceiza.sendmeal.R;
+import ar.com.giancarellieceiza.sendmeal.Tasks.SaveOrder;
 import ar.com.giancarellieceiza.sendmeal.adapters.DishAdapter;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
 import ar.com.giancarellieceiza.sendmeal.model.Order;
+import ar.com.giancarellieceiza.sendmeal.notification.MyNotificationPublisher;
 
 public class NewOrder extends AppCompatActivity {
 
@@ -55,7 +59,8 @@ public class NewOrder extends AppCompatActivity {
         return true;
     };
 
-    public void onConfirmarPlato(android.view.View v) {
-
-    };
+    public void onConfirmarPedido(android.view.View v) {
+        SaveOrder saveOrder = new SaveOrder(v.getContext());
+        saveOrder.execute();
+    }
 }

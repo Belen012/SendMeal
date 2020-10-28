@@ -15,7 +15,9 @@ import java.util.List;
 
 import ar.com.giancarellieceiza.sendmeal.model.Plato;
 
+@Dao
 public class PlatosDao {
+
     List<Plato> listaPlatos = new ArrayList<Plato>();
 
     private void iniciar(){

@@ -12,17 +12,17 @@ class BuscarDato extends AsyncTask<String, Void, List<Dato>> {
     public BuscarDato(DatoDAO dao, AppRepository context) {
         this.dao = dao;
         this.callback = context;
-    }
+    };
 
     @Override
     protected List<Dato> doInBackground(String... strings) {
         List<Dato> datos = dao.buscarTodos();
         return datos;
-    }
+    };
 
     @Override
     protected void onPostExecute(List<Dato> datos) {
         super.onPostExecute(datos);
         callback.onResult(datos);
-    }
-}
+    };
+};

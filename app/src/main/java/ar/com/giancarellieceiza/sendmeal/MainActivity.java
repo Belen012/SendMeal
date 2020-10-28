@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
     Boolean realizarCargaEstado = false;
     String mesV = "1";
     String añoV = "2000";
-
 
     //UI
     CheckBox terminos;
@@ -308,6 +308,7 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
 
     @Override
     public void onResult(List result) {
+        Log.i("info",result.toString());
         Toast.makeText(MainActivity.this, "Exito!", Toast.LENGTH_LONG).show();
     }
 };

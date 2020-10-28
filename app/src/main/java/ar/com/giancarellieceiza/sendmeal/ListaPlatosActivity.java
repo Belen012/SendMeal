@@ -44,8 +44,6 @@ public class ListaPlatosActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(platoRecyclerAdapter);
-
-
     }
 
 }

@@ -1,64 +1,51 @@
 package ar.com.giancarellieceiza.sendmeal.Database;
 
 import android.app.Application;
+import android.telecom.Call;
 import android.util.Log;
 
 import java.util.List;
 
 import ar.com.giancarellieceiza.sendmeal.Daos.DishDAO;
+import ar.com.giancarellieceiza.sendmeal.Daos.OrderDAO;
+import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
+import ar.com.giancarellieceiza.sendmeal.Tasks.BuscarPlatos;
+import ar.com.giancarellieceiza.sendmeal.Tasks.SaveOrder;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
+import ar.com.giancarellieceiza.sendmeal.model.Order;
 
 public class AppRepository {
-    private DishDAO platoDao;
-    private OnResultCallback callback;
+    private DishDAO dishDAO;
+    private OrderDAO orderDAO;
+    private Callback callback;
 
-    public AppRepository(Application application, OnResultCallback context){
+    public AppRepository(Application application, Callback callback){
         AppDatabase db = AppDatabase.getInstance(application);
-        platoDao = db.platoDao();
-        callback = context;
+        dishDAO = db.dishDAO();
+        orderDAO = db.orderDAO();
+        this.callback = callback;
     }
 
-    public void insertar(final Plato plato){
+    public AppRepository(Application application){
+        AppDatabase db = AppDatabase.getInstance(application);
+        dishDAO = db.dishDAO();
+        orderDAO = db.orderDAO();
+    }
+
+    public void insertar(final Dish dish){
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                platoDao.insertar(plato);
+                dishDAO.insertar(dish);
             }
         });
-    }
-
-    public void borrar(final Plato plato){
-        AppDatabase.databaseWriteExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                platoDao.borrar(plato);
-            }
-        });
-    }
-
-    public void actualizar(final Plato plato){
-        AppDatabase.databaseWriteExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                platoDao.actualizar(plato);
-            }
-        });
-    }
-
-    public void buscar(String id) {
-        new BuscarPlatoById(platoDao, this).execute(id);
     }
 
     public void buscarTodos() {
-        new BuscarPlatos(platoDao, this).execute();
+        new BuscarPlatos(this.dishDAO, this.callback).execute();
     }
 
-    public void onResult(List<Dish> dish) {
-        Log.d("DEBUG", "Plato found");
-        callback.onResult(dish);
-    }
-
-    public interface OnResultCallback<T> {
-        void onResult(List<T> result);
+    public void addOrder(Order newOrder, Callback callback) {
+        (new SaveOrder(this.orderDAO, callback, newOrder)).execute();
     }
 }

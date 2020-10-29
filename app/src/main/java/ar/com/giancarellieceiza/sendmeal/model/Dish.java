@@ -28,6 +28,21 @@ public class Dish implements Parcelable {
         this.calorias = calorias;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Boolean getValido() {
+        return this.valido;
+    }
+
+    public void setValido(Boolean valido){
+        this.valido = valido;
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;

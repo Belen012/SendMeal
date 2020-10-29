@@ -5,16 +5,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Order implements Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
     private String correo = "";
     private List<Dish> platosSeleccionados = new ArrayList<Dish>();
     private String tipoEnvio = "";
     private String direccion = "";
-
 
     public List<Dish> getPlatosSeleccionados() {
         return platosSeleccionados;
@@ -91,5 +96,13 @@ public class Order implements Parcelable {
 
     public List<Dish> getPlatos() {
         return this.platosSeleccionados;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

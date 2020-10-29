@@ -5,10 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import ar.com.giancarellieceiza.sendmeal.Database.AppRepository;
+import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
 import ar.com.giancarellieceiza.sendmeal.R;
 
 
@@ -19,6 +22,14 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        AppRepository repository = new AppRepository(this.getApplication(), new Callback() {
+            @Override
+            public void onCallback() {
+                Log.i("info","El callback se ejecutó correctamente");
+            }
+        });
+        repository.buscarTodos();
     };
 
     @Override

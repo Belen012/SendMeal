@@ -8,9 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import ar.com.giancarellieceiza.sendmeal.Database.AppRepository;
+import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
 import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.Tasks.SaveOrder;
 import ar.com.giancarellieceiza.sendmeal.adapters.DishAdapter;
@@ -60,7 +63,12 @@ public class NewOrder extends AppCompatActivity {
     };
 
     public void onConfirmarPedido(android.view.View v) {
-        SaveOrder saveOrder = new SaveOrder(v.getContext());
-        saveOrder.execute();
+        AppRepository repository = new AppRepository(this.getApplication());
+        repository.addOrder(pedido, new Callback() {
+            @Override
+            public void onCallback() {
+                Log.i("info","Pedido agregado correctamente");
+            }
+        });
     }
 }

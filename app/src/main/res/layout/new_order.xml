@@ -4,64 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PedidoActivity"
+    tools:context=".Activities.NewOrder"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
+    <TextView
+        android:id="@+id/monto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#177761"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"  />
+        android:text="TextView" />
 
     <EditText
-        android:id="@+id/editText_correo"
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/correo"
+        android:hint="Correo"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText_direccion"
+        android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/direccion"
+        android:hint="Dirección"
         android:inputType="textPersonName" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:entries="@array/tiposEnvios" />
 
-    <TextView
-        android:id="@+id/textView_monto"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="TextView"
-        android:textSize="18sp" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_listaPlatos"
+        android:id="@+id/listaPlatos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/button_agregarPlato"
+        android:id="@+id/botonAgregarPlato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onAgregarPlato"
-        android:text="@string/agregar_plato" />
+        android:text="Agregar plato" />
 
     <Button
-        android:id="@+id/button_confirmarPedido"
+        android:id="@+id/botonGuardarPedido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onConfirmarPedido"
-        android:text="@string/confirmar_pedido" />
+        android:text="Confirmar pedido" />
 
 </LinearLayout>

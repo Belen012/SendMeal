@@ -1,27 +1,23 @@
-package ar.com.giancarellieceiza.sendmeal;
+package ar.com.giancarellieceiza.sendmeal.Activities;
 
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import ar.com.giancarellieceiza.sendmeal.dao.PlatosDao;
-import ar.com.giancarellieceiza.sendmeal.model.Plato;
+import ar.com.giancarellieceiza.sendmeal.R;
+import ar.com.giancarellieceiza.sendmeal.model.Dish;
 
-public class PlatoNuevoActivity extends AppCompatActivity {
+public class NewDish extends AppCompatActivity {
 
     //PlatosDao platosDao;
 
     //UI
-    Toolbar toolbar;
     EditText titulo;
     EditText descripcion;
     EditText precio;
@@ -32,7 +28,7 @@ public class PlatoNuevoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plato_nuevo);
+        setContentView(R.layout.new_dish);
 
 
         titulo = findViewById(R.id.edit_titulo);
@@ -42,14 +38,8 @@ public class PlatoNuevoActivity extends AppCompatActivity {
         guardar = findViewById(R.id.button_guardar);
         //platosDao = new PlatosDao();
 
-        //Barra con boton hacia atras
-        toolbar = findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-        ActionBar atras = getSupportActionBar();
-        atras.setDisplayHomeAsUpEnabled(true);
-
         guardar.setOnClickListener(new View.OnClickListener() {
-           Plato platoNuevo = new Plato();
+           Dish platoNuevo = new Dish();
             @Override
             public void onClick(View v) {
                 if (titulo.getText().toString().isEmpty()) {
@@ -77,6 +67,13 @@ public class PlatoNuevoActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
     void showToast(String message) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;

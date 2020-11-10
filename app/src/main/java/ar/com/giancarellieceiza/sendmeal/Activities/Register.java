@@ -1,4 +1,4 @@
-package ar.com.giancarellieceiza.sendmeal;
+package ar.com.giancarellieceiza.sendmeal.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,8 +23,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import java.util.List;
-
+import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.model.CuentaBancaria;
 import ar.com.giancarellieceiza.sendmeal.model.Tarjeta;
 import ar.com.giancarellieceiza.sendmeal.model.Usuario;
@@ -34,7 +32,7 @@ interface EditCallback {
     void onEdit (String text);
 }
 
-public class MainActivity extends AppCompatActivity implements AppRepository.OnResultCallback {
+public class Register extends AppCompatActivity {
 
     //Instanciamos las entidades
     Tarjeta tarjeta = new Tarjeta();
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
     Boolean realizarCargaEstado = false;
     String mesV = "1";
     String añoV = "2000";
+
 
     //UI
     CheckBox terminos;
@@ -67,10 +66,7 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        AppRepository repository = new AppRepository(this.getApplication(),this);
-        repository.buscarTodos();
+        setContentView(R.layout.register);
 
         terminos = findViewById(R.id.terminosCondiciones);
         registrar = findViewById(R.id.button_registrar);
@@ -85,12 +81,6 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
         creditoInicial = findViewById(R.id.creditoInicial);
         mesVencimientoSpinner = findViewById(R.id.mesVencimiento);
         añoVencimientoSpinner = findViewById(R.id.añoVencimiento);
-
-        //barra con boton atras
-        toolbar = findViewById(R.id.toolbar0);
-        setSupportActionBar(toolbar);
-        ActionBar barraSuperior = getSupportActionBar();
-        barraSuperior.setDisplayHomeAsUpEnabled(true);
 
         setListMonth();
 
@@ -305,10 +295,4 @@ public class MainActivity extends AppCompatActivity implements AppRepository.OnR
         if (!this.aceptaTerminos) registrar.setEnabled(false);
         //if (this.passwordRepeat.compareTo(usuario.getClave()) != 0) registrar.setEnabled(false);
     };
-
-    @Override
-    public void onResult(List result) {
-        Log.i("info",result.toString());
-        Toast.makeText(MainActivity.this, "Exito!", Toast.LENGTH_LONG).show();
-    }
 };

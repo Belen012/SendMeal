@@ -5,41 +5,69 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.com.giancarellieceiza.sendmeal.R;
+import ar.com.giancarellieceiza.sendmeal.Services.DishServices;
 import ar.com.giancarellieceiza.sendmeal.adapters.DishAdapter;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dishes extends AppCompatActivity {
 
     RecyclerView recycler;
     ArrayList<Dish> dishes = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
+    AppCompatActivity self = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dishes);
 
-        dishes.add(new Dish("Fideos","Fideos con salsa bella", 200, 10));
-        dishes.add(new Dish("Hamburguesa", "Tomate, huevo frito, lechuga, jamon y queso", 300,522));
-        dishes.add(new Dish("Ñoquis","Ñoquis con salsa 4 quesos",200 , 300 ));
-        dishes.add(new Dish("Ravioles","Ravioles de ricota y acelga",200 ,130 ));
-        dishes.add(new Dish("Lomito simple","Lomo simple con lechucha y tomate",190 ,160 ));
-        dishes.add(new Dish("Lomito super","Lomo completo con jamon, queso, tomate, huevo",230 ,190 ));
-        dishes.add(new Dish("Pizza muzzarella","Muzzarella y aceitunas", 320 ,240 ));
-        dishes.add(new Dish("Pizza napolitana","Muzzarella, rodajas de tomate, queso rallado y oregano", 380,250 ));
-        dishes.add(new Dish("Papas fritas con cheddar","Porcion para 1 persona",95 ,200 ));
-        dishes.add(new Dish("Papas fritas simples","Porcion para 1 persona",50 ,140 ));
-        dishes.add(new Dish("Milanesa a la pizza con papas fritas","Milanesa con salsa, oregano, aceitunas, y papas fritas",290 ,400 ));
+        Gson gson = new GsonBuilder().setLenient().create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.0.106:3001/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
 
-        DishAdapter dishAdapter = new DishAdapter(dishes);
-        recycler = findViewById(R.id.list);
-        layoutManager = new LinearLayoutManager(this);
-        recycler.setLayoutManager(layoutManager);
-        recycler.setAdapter(dishAdapter);
+        DishServices platoService = retrofit.create(DishServices.class);
+
+        Call<List<Dish>> callDishs = platoService.getDishList();
+
+        callDishs.enqueue(
+                new Callback<List<Dish>>() {
+                    @Override
+                    public void onResponse(Call<List<Dish>> call, Response<List<Dish>> response) {
+                        if (response.code() == 200) {
+                            for (Dish dish : response.body()) {
+                                Log.i("Info","Cargando " + dish.getTitulo());
+                                dishes.add(dish);
+                            }
+                            DishAdapter dishAdapter = new DishAdapter(dishes);
+                            recycler = findViewById(R.id.list);
+                            layoutManager = new LinearLayoutManager(self);
+                            recycler.setLayoutManager(layoutManager);
+                            recycler.setAdapter(dishAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Dish>> call, Throwable t) {
+                        Log.d("DEBUG", "Retorno Fallido: " + t.toString());
+                    }
+                }
+        );
     }
 
     @Override

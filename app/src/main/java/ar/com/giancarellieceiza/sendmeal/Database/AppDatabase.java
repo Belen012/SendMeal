@@ -11,8 +11,9 @@ import java.util.concurrent.Executor;
 import ar.com.giancarellieceiza.sendmeal.Daos.DishDAO;
 import ar.com.giancarellieceiza.sendmeal.Daos.OrderDAO;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
+import ar.com.giancarellieceiza.sendmeal.model.Order;
 
-@Database(entities = {Dish.class}, version = 1)
+@Database(entities = {Dish.class, Order.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public static Executor databaseWriteExecutor;
 

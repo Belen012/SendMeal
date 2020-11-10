@@ -1,35 +1,33 @@
 package ar.com.giancarellieceiza.sendmeal.Tasks;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import ar.com.giancarellieceiza.sendmeal.Activities.Home;
+import java.util.List;
+
 import ar.com.giancarellieceiza.sendmeal.Daos.OrderDAO;
 import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
+import ar.com.giancarellieceiza.sendmeal.model.Dish;
 import ar.com.giancarellieceiza.sendmeal.model.Order;
-import ar.com.giancarellieceiza.sendmeal.notification.MyNotificationPublisher;
 
-public class SaveOrder extends AsyncTask<Void, Void, String> {
+public class ListOrders extends AsyncTask<Void, Void, String> {
     OrderDAO orderDAO;
-    Order newOrder;
-    Callback<String> callback;
+    List<Order> orders;
+    Callback<List<Order>> callback;
 
-    public SaveOrder(OrderDAO orderDAO, Callback<String> callback, Order newOrder) {
+    public ListOrders (OrderDAO orderDAO, Callback<List<Order>> callback) {
         this.orderDAO = orderDAO;
-        this.newOrder = newOrder;
         this.callback = callback;
     };
 
     @Override
     protected String doInBackground(Void... Void) {
-        orderDAO.insertar(newOrder);
+        this.orders = orderDAO.selectAll();
         return "Exito";
     };
 
     @Override
     protected void onPostExecute(String result) {
-        callback.onCallback("OK");
+        callback.onCallback(orders);
     }
 }

@@ -10,9 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.List;
+
 import ar.com.giancarellieceiza.sendmeal.Database.AppRepository;
 import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
 import ar.com.giancarellieceiza.sendmeal.R;
+import ar.com.giancarellieceiza.sendmeal.model.Dish;
+import ar.com.giancarellieceiza.sendmeal.model.Order;
 
 
 public class Home extends AppCompatActivity {
@@ -22,14 +26,6 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
-        AppRepository repository = new AppRepository(this.getApplication(), new Callback() {
-            @Override
-            public void onCallback() {
-                Log.i("info","El callback se ejecutó correctamente");
-            }
-        });
-        repository.buscarTodos();
     };
 
     @Override

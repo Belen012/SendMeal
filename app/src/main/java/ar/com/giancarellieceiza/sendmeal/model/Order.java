@@ -7,9 +7,13 @@ import android.os.Parcelable;
 import androidx.annotation.RequiresApi;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.com.giancarellieceiza.sendmeal.Helpers.DishesConverter;
 
 @Entity
 public class Order implements Parcelable {
@@ -17,6 +21,7 @@ public class Order implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String correo = "";
+    @TypeConverters(DishesConverter.class)
     private List<Dish> platosSeleccionados = new ArrayList<Dish>();
     private String tipoEnvio = "";
     private String direccion = "";

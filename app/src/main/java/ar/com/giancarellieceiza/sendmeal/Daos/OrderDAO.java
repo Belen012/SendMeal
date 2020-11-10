@@ -21,9 +21,9 @@ public interface OrderDAO {
     @Update
     void actualizar(Order order);
 
-    @Query("SELECT * FROM order WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM `order` WHERE id = :id LIMIT 1")
     Order buscar(String id);
 
-    @Query("SELECT * FROM order")
-    List<Order> buscarTodos();
-}
+    @Query("SELECT * FROM `order`;")
+    List<Order> selectAll();
+};

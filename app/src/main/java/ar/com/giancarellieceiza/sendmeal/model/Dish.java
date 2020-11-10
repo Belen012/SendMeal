@@ -17,7 +17,6 @@ public class Dish implements Parcelable {
     private Integer calorias = 0;
     private Boolean valido = false;
 
-
     public Dish(){
     }
 

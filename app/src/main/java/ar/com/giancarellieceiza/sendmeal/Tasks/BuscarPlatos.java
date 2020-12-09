@@ -25,7 +25,7 @@ public class BuscarPlatos extends AsyncTask<String, Void, List<Dish>> {
     }
 
     protected void onPostExecute(List<Dish> platos) {
-        super.onPostExecute(platos);
+//        super.onPostExecute(platos);
         callback.onCallback(platos.toString());
     }
 }

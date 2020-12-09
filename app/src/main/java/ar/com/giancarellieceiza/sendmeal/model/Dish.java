@@ -3,6 +3,7 @@ package ar.com.giancarellieceiza.sendmeal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -95,7 +96,6 @@ public class Dish implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
         dest.writeString(titulo);
         dest.writeString(descripcion);
         dest.writeDouble(precio);

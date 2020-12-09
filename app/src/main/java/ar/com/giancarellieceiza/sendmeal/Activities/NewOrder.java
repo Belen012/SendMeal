@@ -1,12 +1,12 @@
 package ar.com.giancarellieceiza.sendmeal.Activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,13 +17,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-
 import ar.com.giancarellieceiza.sendmeal.Database.AppRepository;
 import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
 import ar.com.giancarellieceiza.sendmeal.R;
 import ar.com.giancarellieceiza.sendmeal.Services.OrderServices;
-import ar.com.giancarellieceiza.sendmeal.Tasks.SaveOrder;
 import ar.com.giancarellieceiza.sendmeal.adapters.DishAdapter;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
 import ar.com.giancarellieceiza.sendmeal.model.Order;
@@ -83,10 +80,16 @@ public class NewOrder extends AppCompatActivity {
     };
 
     public void onConfirmarPedido(android.view.View v) {
-        AppRepository repository = new AppRepository(this.getApplication());
         pedido.setCorreo(editTextTextPersonName.getText().toString());
         pedido.setDireccion(editTextTextPersonName2.getText().toString());
         pedido.setTipoEnvio(spinner.getSelectedItem().toString());
+
+        startActivityForResult(new Intent(this, Map.class),10);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        AppRepository repository = new AppRepository(this.getApplication());
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
@@ -98,21 +101,21 @@ public class NewOrder extends AppCompatActivity {
         Call<Order> newOrderCall = orderServices.createOrder(pedido);
 
         newOrderCall.enqueue(
-            new retrofit2.Callback<Order>() {
-                @Override
-                public void onResponse(Call<Order> call, Response<Order> response) {
-                    if (response.code() == 200) {
-                        Log.i("Info",response.body().getCorreo());
-                    } else {
-                        Log.i("Info","Something happend" + response.code());
+                new retrofit2.Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+                        if (response.code() == 200) {
+                            Log.i("Info",response.body().getCorreo());
+                        } else {
+                            Log.i("Info","Something happend" + response.code());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+                        Log.d("DEBUG", "Retorno Fallido: " + t.toString());
                     }
                 }
-
-                @Override
-                public void onFailure(Call<Order> call, Throwable t) {
-                    Log.d("DEBUG", "Retorno Fallido: " + t.toString());
-                }
-            }
         );
 
         repository.addOrder(pedido, new Callback<String>() {
@@ -126,5 +129,6 @@ public class NewOrder extends AppCompatActivity {
                 Log.i("info","Pedido agregado correctamente");
             }
         });
+        super.onActivityResult(requestCode,resultCode,data);
     }
 }

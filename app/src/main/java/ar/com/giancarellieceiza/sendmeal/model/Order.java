@@ -25,6 +25,8 @@ public class Order implements Parcelable {
     private List<Dish> platosSeleccionados = new ArrayList<Dish>();
     private String tipoEnvio = "";
     private String direccion = "";
+    private Double latitud = 0.0;
+    private Double longitud = 0.0;
 
     public List<Dish> getPlatosSeleccionados() {
         return platosSeleccionados;
@@ -79,6 +81,10 @@ public class Order implements Parcelable {
         this.correo = correo;
     }
 
+    public void setLatitud(Double latitud){ this.latitud = latitud; };
+
+    public void setLongitud(Double longitud){ this.longitud = longitud; };
+
     public void setPlatosSeleccionados(List<Dish> platosSeleccionados) {
         this.platosSeleccionados = platosSeleccionados;
     }
@@ -102,6 +108,10 @@ public class Order implements Parcelable {
     public List<Dish> getPlatos() {
         return this.platosSeleccionados;
     }
+
+    public Double getLatitud(){ return this.latitud; };
+
+    public Double getLongitud(){ return this.longitud; };
 
     public Long getId() {
         return id;

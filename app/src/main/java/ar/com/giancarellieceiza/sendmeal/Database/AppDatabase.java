@@ -13,7 +13,7 @@ import ar.com.giancarellieceiza.sendmeal.Daos.OrderDAO;
 import ar.com.giancarellieceiza.sendmeal.model.Dish;
 import ar.com.giancarellieceiza.sendmeal.model.Order;
 
-@Database(entities = {Dish.class, Order.class}, version = 2)
+@Database(entities = {Dish.class, Order.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public static Executor databaseWriteExecutor;
 

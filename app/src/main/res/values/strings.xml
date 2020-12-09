@@ -18,6 +18,8 @@
     <string name="debito">Debito</string>
     <string name="fechaVencimiento">Fecha de Vencimiento</string>
 
+    <string name="google_maps_key">AIzaSyDM6JI2GDHfaymWL_0xuDyW3E5QFxQ6ZBw</string>
+
     <string name="nuevoPlato">Nuevo Plato</string>
     <string name="descripcion">Descripción</string>
     <string name="titulo">Título</string>

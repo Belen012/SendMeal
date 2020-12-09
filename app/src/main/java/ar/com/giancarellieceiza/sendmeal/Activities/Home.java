@@ -5,18 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-import java.util.List;
-
-import ar.com.giancarellieceiza.sendmeal.Database.AppRepository;
-import ar.com.giancarellieceiza.sendmeal.Helpers.Callback;
 import ar.com.giancarellieceiza.sendmeal.R;
-import ar.com.giancarellieceiza.sendmeal.model.Dish;
-import ar.com.giancarellieceiza.sendmeal.model.Order;
 
 
 public class Home extends AppCompatActivity {
@@ -50,5 +44,9 @@ public class Home extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    };
+
+    public void openMap(View v) {
+        startActivity(new Intent(this, Map.class));
     };
 };

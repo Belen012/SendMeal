@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,12 @@
         android:theme="@style/Theme.AppCompat.DayNight"
         android:usesCleartextTraffic="true">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".Activities.Map" />
+
         <activity android:name=".Activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,28 +30,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activities.Register"
             android:label=""
-            android:parentActivityName=".Activities.Home"/>
-
+            android:parentActivityName=".Activities.Home" />
         <activity
             android:name=".Activities.NewDish"
             android:label=""
-            android:parentActivityName=".Activities.Home"/>
-
+            android:parentActivityName=".Activities.Home" />
         <activity
             android:name=".Activities.Dishes"
             android:label=""
             android:parentActivityName=".Activities.Home" />
-
-        <activity android:name=".Activities.NewOrder"
+        <activity
+            android:name=".Activities.NewOrder"
             android:label=""
-            android:parentActivityName=".Activities.Dishes"/>
+            android:parentActivityName=".Activities.Dishes" />
 
         <receiver android:name=".notification.MyNotificationPublisher" />
-
     </application>
 
 </manifest>

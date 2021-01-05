@@ -16,6 +16,6 @@ public interface DishServices {
     @GET("platos")
     Call<List<Dish>> getDishList();
 
-    @POST("plato")
+    @POST("platos")
     Call<Dish> createDish(@Body Dish plato);
 }

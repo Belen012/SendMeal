@@ -37,7 +37,7 @@ public class Dishes extends AppCompatActivity {
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:3001/")
+                .baseUrl("http://192.168.43.234:3001/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -51,7 +51,6 @@ public class Dishes extends AppCompatActivity {
                     public void onResponse(Call<List<Dish>> call, Response<List<Dish>> response) {
                         if (response.code() == 200) {
                             for (Dish dish : response.body()) {
-                                Log.i("Info","Cargando " + dish.getTitulo());
                                 dishes.add(dish);
                             }
                             DishAdapter dishAdapter = new DishAdapter(dishes);

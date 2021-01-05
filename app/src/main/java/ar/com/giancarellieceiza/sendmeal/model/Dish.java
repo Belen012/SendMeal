@@ -17,6 +17,7 @@ public class Dish implements Parcelable {
     private double precio = 0.0;
     private Integer calorias = 0;
     private Boolean valido = false;
+    private String imgUrl = "";
 
     public Dish(){
     }
@@ -43,6 +44,8 @@ public class Dish implements Parcelable {
     public void setValido(Boolean valido){
         this.valido = valido;
     }
+
+    public void setImgUrl(String url) { this.imgUrl = url; }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -72,6 +75,8 @@ public class Dish implements Parcelable {
     public String getDescripcion() {
         return descripcion;
     }
+
+    public String getImgUrl() { return imgUrl; }
 
     public double getPrecio() {
         return precio;

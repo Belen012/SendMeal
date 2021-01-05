@@ -63,4 +63,11 @@
         android:layout_height="wrap_content"
         android:text="@string/guardar" />
 
+    <Button
+        android:id="@+id/button_agregar_foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/foto"
+        android:onClick="openCamera"/>
+
 </LinearLayout>

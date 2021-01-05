@@ -93,7 +93,7 @@ public class NewOrder extends AppCompatActivity {
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:3001/")
+                .baseUrl("http://192.168.43.234:3001/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
